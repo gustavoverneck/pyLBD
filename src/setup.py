@@ -15,7 +15,7 @@ def log(message):
     logfile.write(message)
     print(message)
 
-def setup():
+def isOk():
     global logfile
     log_created = 0
     if not os.path.exists('log'):
@@ -43,3 +43,5 @@ def setup():
         os.makedirs('input')
     else:
         log("Input folder already exists. Doing nothing.")
+    
+    return True
