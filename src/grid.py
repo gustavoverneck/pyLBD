@@ -28,8 +28,4 @@ class Grid:
         else:
             log("ValueError: The dimension must be between 1 and 3.")
             raise ValueError("The dimension must be between 1 and 3.")
-    
-    
-
         
-    
