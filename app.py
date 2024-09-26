@@ -1,5 +1,9 @@
 # app.py
 
+# Para introduzir arquivos .stl do blender:
+# pip install numpy-stl
+
+
 from src.setup import isOk
 
 

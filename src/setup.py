@@ -45,3 +45,8 @@ def isOk():
         log("Input folder already exists. Doing nothing.")
     
     return True
+
+
+def readParams(file="params.in"):
+    with open(file, 'r') as f:
+        lines = f.readlines()
