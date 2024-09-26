@@ -47,6 +47,37 @@ def isOk():
     return True
 
 
-def readParams(file="params.in"):
+def readParams(file="input/params.in"):
+    nx = np.nan; ny = np.nan; nz = np.nan; D = np.nan; Q = np.nan
     with open(file, 'r') as f:
-        lines = f.readlines()
+        for line in f.readlines():
+            a = line.split("=")
+            match a[0]:
+                case "nx":
+                    nx = int(a[1])
+                case "ny":
+                    ny = int(a[1])
+                case "nz":
+                    nz = int(a[1])
+                case "D":
+                    D = int(a[1])
+                case "Q":
+                    Q = int(a[1])
+                case _:
+                    pass
+        f.close()
+        inputData = {}
+        
+        if not np.isnan(D):
+            inputData["D"] = D
+        if not np.isnan(Q):
+            inputData["Q"] = Q
+        if not np.isnan(nx):
+            inputData["nx"] = nx
+        if not np.isnan(ny):
+            inputData["ny"] = ny
+        if not np.isnan(nz):
+            inputData["nz"] = nz
+                
+        return inputData
+            
