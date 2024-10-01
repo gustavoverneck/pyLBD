@@ -14,16 +14,16 @@ class LBM:
     def getDimensions(self, params):
         if (self.D == 1):
             self.nx = params["nx"]
-            self.dims = [self.nx]
+            self.dims = (self.nx, 1, 1)
         elif (self.D == 2):
             self.nx = params["nx"]
             self.ny = params["ny"]
-            self.dims = [self.nx, self.ny]
+            self.dims = (self.nx, self.ny, 1)
         elif (self.D == 3):
             self.nx = params["nx"]
             self.ny = params["ny"]
             self.nz = params["nz"]
-            self.dims = [self.nx, self.ny, self.nz]
+            self.dims = (self.nx, self.ny, self.nz)
         else:
             log("ValueError: The dimension must be between 1 and 3.")
             raise ValueError("The dimension must be between 1 and 3.")

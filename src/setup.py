@@ -49,6 +49,16 @@ def isOk():
 
 def readParams(file="input/params.in"):
     nx = np.nan; ny = np.nan; nz = np.nan; D = np.nan; Q = np.nan
+    try:
+        with open(file, 'r') as f:
+            f.close()
+    except FileNotFoundError:
+        log(f"File {file} not found.")
+        log(f"Creatiung '{file}' template file.")
+        with open(file, 'w') as f:
+            f.write("nx=100\nny=100\nnz=1\nD=2\nQ=9\n")
+            f.close()
+
     with open(file, 'r') as f:
         for line in f.readlines():
             a = line.split("=")
