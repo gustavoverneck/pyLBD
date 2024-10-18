@@ -17,11 +17,18 @@ if __name__ == '__main__':
         inputParams = readParams(file='input/params.in') # This will read the parameters from the file 'params.in' and store them.
         nx = inputParams['nx']; ny = inputParams['ny']; D = inputParams['D']; Q = inputParams['Q']
         lbm = LBM(params=inputParams)
-        for i in range(nx):
-           lbm.grid.setWall(i=i, j=0, k=0)
-           lbm.grid.setWall(i=i, j=ny-1, k=0)
+        
+        # Set initial parameters
         for j in range(ny):
-            lbm.grid.setInflow(i=0, j=j, k=0)
-            lbm.grid.setOutflow(i=nx-1, j=j, k=0)
-        #vertices = load_stl_file(stl_obj_dir)
-        #vertices = scale_and_dimensionalize(vertices, grid_shape=lbm.dims, target_dimension=2, position=(0,0,0))
+            lbm.grid.setInflow(i=0, j=j)
+            lbm.grid.setOutflow(i=nx-1, j=j)
+        for i in range(nx):
+           lbm.grid.setWall(i=i, j=0)
+           lbm.grid.setWall(i=i, j=ny-1)
+        
+        vertices = load_stl_file(stl_obj_dir)
+        vertices = scale_and_dimensionalize(vertices, grid_shape=lbm.dims, target_dimension=2, position=(0,0,0), scale=0.5, rotation_angle=45)
+        
+        lbm.loadObject(vertices)
+        lbm.updateBoundaries()
+        lbm.printGrid()

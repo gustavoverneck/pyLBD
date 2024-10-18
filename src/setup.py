@@ -4,14 +4,21 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+from watermark import watermark
+
+
+author = "Gustavo A. Verneck\n\nRequirements: "
+watermark_output = watermark(iversions=True, author=author, globals_=globals())
+
+print(watermark_output)
 
 def log(message):
     global logfile
     current_time = time.time()
     local_time = time.localtime(current_time)
     milliseconds = int((current_time - int(current_time)) * 1000)
-    current_time = time.strftime("%Y-%m-%d %H:%M:%S", local_time) + f".{milliseconds:03d}"
-    message = current_time + " - " + message + "\n"
+    current_time = time.strftime("[%Y-%m-%d] [%H:%M:%S", local_time) + f".{milliseconds:03d}]"
+    message = current_time + " " + message + "\n"
     logfile.write(message)
     print(message)
 
@@ -25,7 +32,7 @@ def isOk():
     # Log
     log_filename = time.strftime("%Y-%m-%d-%H_%M_%S")
     logfile = open(f"log/{log_filename}.txt", "w+")
-    log(f"pyLBM: {log_filename} Log")
+    log(f"pyLBM: {log_filename} Log initialized.")
     log("Starting application.")
     if log_created:
         log("Log folder doesn't exists. Creating 'log' folder.")
