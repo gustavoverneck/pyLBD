@@ -1,7 +1,7 @@
 # src/cell.py
 
-import numpy as np
 from src.setup import log
+import numpy as np
 
 class Cell:
     def __init__(self, D, Q, i=0, j=0, type=np.nan):

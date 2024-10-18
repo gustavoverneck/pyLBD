@@ -9,7 +9,6 @@ from watermark import watermark
 
 author = "Gustavo A. Verneck\n\nRequirements: "
 watermark_output = watermark(iversions=True, author=author, globals_=globals())
-
 print(watermark_output)
 
 def log(message):
@@ -22,6 +21,7 @@ def log(message):
     logfile.write(message)
     print(message)
 
+
 def isOk():
     global logfile
     log_created = 0
@@ -31,9 +31,11 @@ def isOk():
     
     # Log
     log_filename = time.strftime("%Y-%m-%d-%H_%M_%S")
-    logfile = open(f"log/{log_filename}.txt", "w+")
+    logfile = open(f"log/{log_filename}.txt", "w")
     log(f"pyLBM: {log_filename} Log initialized.")
     log("Starting application.")
+    pass
+    
     if log_created:
         log("Log folder doesn't exists. Creating 'log' folder.")
     else:

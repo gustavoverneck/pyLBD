@@ -24,10 +24,11 @@ class Grid:
         
         self.D = D  # Dimension
         self.Q = Q  # Number of velocities
-        self.N = 9  # Number of populations (rho, T, ...)
-        self.M = np.array(np.zeros(self.N) for i in range(self.Q))  # M matrix to transform from f to m (velocity space to momentum space)
+        self.N = N  # Number of populations (rho, T, ...)
+        #self.M = np.array()  # M matrix to transform from f to m (velocity space to momentum space)    # BUG = when it's declared, log doesn't work (???)
         log(f"Creating grid with {D} dimensions and {Q} velocities.")
         self.createGrid(D, Q, dims)
+        log(f"The grid sucessfully created.")
 
     
     def createGrid(self, D, Q, dims):
@@ -107,9 +108,8 @@ class Grid:
                     for di in range(-1, 2):
                         for dj in range(-1, 2):
                             ni, nj = i + di, j + dj
-                            if 0 <= ni < self.nx and 0 <= nj < self.ny:
+                            if 0 <= ni < self.nx and 0 <= nj < self.ny: # FIX - Create a proper solution to each cell boundary
                                 pass
-                                #print(self.grid[i][j].boundaries[di][dj])
                                 #self.grid[i][j].boundaries[di+1][dj+1].append(self.grid[ni][nj].type)
                             else:
                                 cell_bounds.append(None)  # Out of bounds
