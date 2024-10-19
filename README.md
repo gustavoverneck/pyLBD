@@ -1,2 +1,2 @@
 # pyLBM
-A (still not working) python lattice bolyzman software.
+A (incomplete) python lattice bolyzman software.
