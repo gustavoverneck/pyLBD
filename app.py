@@ -19,7 +19,7 @@ if __name__ == '__main__':
     if isOk(): # This will create the log file and the folders if they don't exist.
         # Input main grid parameters
         inputParams = readParams(file='input/params.in') # This will read the parameters from the file 'params.in' and store them.
-        nx = inputParams['nx']; ny = inputParams['ny']; D = inputParams['D']; Q = inputParams['Q']
+        nx = inputParams['nx']; ny = inputParams['ny']; D = inputParams['D']; Q = inputParams['Q']; stlfile = inputParams['stlfile']
         lbm = LBM(params=inputParams)
         
         # Set initial grid

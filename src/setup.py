@@ -57,7 +57,7 @@ def isOk():
 
 
 def readParams(file="input/params.in"):
-    nx = np.nan; ny = np.nan; nz = np.nan; D = np.nan; Q = np.nan
+    nx = np.nan; ny = np.nan; nz = np.nan; D = np.nan; Q = np.nan; stlfile = ""
     try:
         with open(file, 'r') as f:
             f.close()
@@ -82,6 +82,8 @@ def readParams(file="input/params.in"):
                     D = int(a[1])
                 case "Q":
                     Q = int(a[1])
+                case "stlfile":
+                    stlfile = a[1].split(r'"')[1]
                 case _:
                     pass
         f.close()
@@ -97,6 +99,8 @@ def readParams(file="input/params.in"):
             inputData["ny"] = ny
         if not np.isnan(nz):
             inputData["nz"] = nz
+        if stlfile != "":
+            inputData["stlfile"] = stlfile
                 
         return inputData
             

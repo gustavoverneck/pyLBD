@@ -1,5 +1,6 @@
-nx=1000
-ny=1000
+nx=100
+ny=100
 nz=1
 D=2
 Q=9
+stlfile="obj.stl"
